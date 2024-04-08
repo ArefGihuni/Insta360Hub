@@ -103,5 +103,28 @@ namespace Insta360.NET.API
             }
         }
 
+        public async Task<TakePictureResponse> TakePictureAsync(HDR hdr)
+        {
+            var setOptionResult = await SetOptionsAsync(CaptureModes.image, hdr);
+            if (!setOptionResult.IsDone)
+                return null;
+
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri(BaseUri, "/osc/commands/execute");
+
+                var json = new TakePicture().GetJson();
+                var response = await client.PostAsync(uri, new StringContent(json));
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content))
+                    return null;
+
+                return JsonConvert.DeserializeObject<TakePictureResponse>(content);
+            }
+        }
+
     }
 }
