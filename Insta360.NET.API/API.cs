@@ -21,6 +21,33 @@ namespace Insta360.NET.API
             BaseUri = new Uri("http://192.168.42.1");
         }
 
+        public API(string ip)
+        {
+            if (!IsValidIP(ip))
+                throw new Exception("Invalid IP");
+
+            BaseUri = new Uri($"http://{ip}");
+        }
+
+        private bool IsValidIP(string ip)
+        {
+            if (string.IsNullOrWhiteSpace(ip) || !ip.Replace(".", "").All(char.IsDigit))
+                return false;
+
+            if (ip.Where(x => x == '.').Count() != 3)
+                return false;
+
+            return true;
+        }
+
+        public void SetNewCameraIP(string ip)
+        {
+            if (!IsValidIP(ip))
+                throw new Exception("Invalid IP");
+
+            BaseUri = new Uri($"http://{ip}");
+        }
+
 
         public async Task<InfoResponse> GetInfoAsync()
         {
