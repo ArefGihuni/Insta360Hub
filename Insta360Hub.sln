@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insta360.Desktop", "Insta360.Desktop\Insta360.Desktop.csproj", "{BEEEBD67-F790-4EF2-80FA-44D3666943BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{30991989-A89B-426C-98D7-F6046CB5F8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30991989-A89B-426C-98D7-F6046CB5F8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30991989-A89B-426C-98D7-F6046CB5F8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEEEBD67-F790-4EF2-80FA-44D3666943BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEEEBD67-F790-4EF2-80FA-44D3666943BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEEEBD67-F790-4EF2-80FA-44D3666943BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEEEBD67-F790-4EF2-80FA-44D3666943BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
