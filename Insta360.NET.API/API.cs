@@ -19,5 +19,22 @@ namespace Insta360.NET.API
         }
 
 
+        public async Task<InfoResponse> GetInfoAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri(BaseUri, "/osc/info");
+                var response = await client.GetAsync(uri);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content))
+                    return null;
+
+                return JsonConvert.DeserializeObject<InfoResponse>(content);
+            }
+        }
+
     }
 }
