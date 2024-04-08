@@ -149,5 +149,23 @@ namespace Insta360.NET.API
             }
         }
 
+        public async Task<CaptureResponse> StopCaptureAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri(BaseUri, "/osc/commands/execute");
+
+                var json = new StopCapture().GetJson();
+                var response = await client.PostAsync(uri, new StringContent(json));
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content))
+                    return null;
+
+                return JsonConvert.DeserializeObject<CaptureResponse>(content);
+            }
+        }
     }
 }
