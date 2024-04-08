@@ -14,7 +14,7 @@ namespace Insta360.NET.API
 {
     public class API
     {
-        public Uri BaseUri { get; }
+        public Uri BaseUri { get; private set; }
 
         public API()
         {
