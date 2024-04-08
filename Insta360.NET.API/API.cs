@@ -1,4 +1,7 @@
-﻿using Insta360Hub.Models.Responses;
+﻿using Insta360.NET.API.Models.Enums;
+using Insta360.NET.API.Models.Requests;
+using Insta360.NET.API.Models.Responses;
+using Insta360Hub.Models.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
