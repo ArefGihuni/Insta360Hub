@@ -83,5 +83,25 @@ namespace Insta360.NET.API
             }
         }
 
+        public async Task<SetOptionsResponse> SetOptionsAsync(CaptureModes captureMode, HDR hdr)
+        {
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri(BaseUri, "/osc/commands/execute");
+                var json = new SetOptions(captureMode, hdr)
+                    .GetJson();
+
+                var response = await client.PostAsync(uri, new StringContent(json));
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content))
+                    return null;
+
+                return JsonConvert.DeserializeObject<SetOptionsResponse>(content);
+            }
+        }
+
     }
 }
